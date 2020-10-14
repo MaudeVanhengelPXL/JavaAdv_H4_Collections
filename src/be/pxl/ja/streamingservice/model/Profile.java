@@ -6,7 +6,9 @@ import be.pxl.ja.streamingservice.exception.InvalidDateException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 public class Profile {
@@ -14,9 +16,13 @@ public class Profile {
 	private static final int MAX_CURRENTLY_WATCHING_SIZE = 3;
 	private String name;
 	private LocalDate dateOfBirth;
+	private List<Content> recentlyWatchedList;
+	private List<Content> currentlyWatchingList;
 
 	public Profile(String name) {
 		this.name = name;
+		recentlyWatchedList = new ArrayList<>(MAX_RECENTLY_WATCHED_SIZE);
+		currentlyWatchingList = new ArrayList<>(MAX_CURRENTLY_WATCHING_SIZE);
 	}
 
 	public String getName() {
@@ -47,5 +53,15 @@ public class Profile {
 
 	public boolean allowedToWatch(Content content) {
 		return content.getMaturityRating().getMinimumAge() <= getAge();
+	}
+
+	public void startWatching(Content content) {
+		if (!currentlyWatchingList.contains(content)) {
+			currentlyWatchingList.add(content);
+		}
+	}
+
+	public void finishWatching(Content content) {
+
 	}
 }
