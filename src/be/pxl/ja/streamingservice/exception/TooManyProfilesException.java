@@ -1,4 +1,4 @@
-package be.pxl.ja.streamingservice.model;
+package be.pxl.ja.streamingservice.exception;
 
 public class TooManyProfilesException extends RuntimeException {
 

@@ -1,10 +1,9 @@
 package be.pxl.ja.streamingservice.model;
 
+import be.pxl.ja.streamingservice.exception.TooManyProfilesException;
 import be.pxl.ja.streamingservice.util.PasswordUtil;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class Account {
 	private String email;
@@ -25,14 +24,10 @@ public class Account {
 	}
 
 	public void addProfile(Profile profile) {
-		try {
-			if (streamingPlan.ordinal() == profiles.size()) {
-				throw new TooManyProfilesException("You can't add any more profiles");
-			}
-			profiles.put(profile.getName(), profile);
-		} catch (TooManyProfilesException e) {
-			System.out.println(e.getMessage());
+		if (streamingPlan.getNumberOfScreens() == profiles.size()) {
+			throw new TooManyProfilesException("You can't add any more profiles");
 		}
+		profiles.put(profile.getName(), profile);
 	}
 
 	public String getEmail() {
