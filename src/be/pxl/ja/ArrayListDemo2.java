@@ -18,9 +18,10 @@ public class ArrayListDemo2 {
 		List<Content> contentList = new ContentRepository().getContentList();
 
 		System.out.println("Eigen kweek: " + contentList.contains(new TVShow("Eigen kweek", Rating.TEENS, 3)));
-		System.out.println("Iron fist: " + contentList.contains(new Movie("Iron fist", Rating.MATURE)));
+		System.out.println("Iron fist: " + contentList.contains(new Movie("Iron Fist", Rating.MATURE)));
 		System.out.println("Rambo: " + contentList.contains(new Movie("Rambo", Rating.TEENS)));
 
+		//Wordt vergeleken op basis van de equals en hashcode in de Content klasse
 	}
 
 

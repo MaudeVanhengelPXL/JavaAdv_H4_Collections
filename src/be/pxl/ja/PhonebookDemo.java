@@ -18,5 +18,6 @@ public class PhonebookDemo {
 		for ( String key : phoneBook.keySet()) {
 			System.out.println(key);
 		}
+		//gezien Set is, is volgorde niet vast van de keySet
 	}
 }
